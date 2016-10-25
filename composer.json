@@ -27,8 +27,6 @@
     }
   },
   "require-dev": {
-    "apigen/apigen": "4.0.0-RC4",
-    "10up/wp_mock": "dev-master",
     "dangoodman/composer-for-wordpress": "^1.0"
   }
 }

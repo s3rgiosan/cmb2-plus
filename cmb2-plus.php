@@ -23,11 +23,11 @@
  * GitHub Branch:     master
  */
 
+namespace logoscon\WP\Plugin\CMB2;
+
 if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
 	require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 }
-
-namespace logoscon\WP\Plugin\CMB2;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -112,9 +112,9 @@ function show_on_front_page( $show, $meta_box_args ) {
 	}
 
 	// Get ID of page set as front page, 0 if there isn't one
-	$front_page = \get_option( 'page_on_front' );
+	$front_page = intval( \get_option( 'page_on_front' ) );
 
-	// there is a front page set and we're on it!
+	// There is a front page set and we're on it!
 	return $post_id === $front_page;
 }
 \add_filter( 'cmb2_show_on', '\logoscon\WP\Plugin\CMB2\show_on_front_page', 10, 2 );
