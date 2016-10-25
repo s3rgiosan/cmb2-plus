@@ -1,6 +1,7 @@
 {
   "name": "logoscon/cmb2-plus",
   "description": "Common utility classes for the CMB2 plugin on WordPress.",
+  "type": "wordpress-plugin",
   "keywords": ["wordpress", "cmb2", "library", "toolkit"],
   "homepage": "https://github.com/log-oscon/cmb2-plus",
   "license": "GPL-2.0+",
