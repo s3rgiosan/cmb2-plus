@@ -118,7 +118,11 @@ function show_on_front_page( $show, $meta_box_args ) {
 	}
 
 	$value = \sanitize_key( $meta_box_args['show_on']['value'] );
-	if ( ! in_array( $value,  array('page_on_front', 'page_for_posts' ) ) ) {
+	if ( empty( $value ) ) { // Backward compatibility
+		$value = 'page_on_front';
+	}
+	
+	if ( ! in_array( $value,  array( 'page_on_front', 'page_for_posts' ) ) ) {
 		return false;
 	}
 
