@@ -75,10 +75,11 @@ function get_term_options( $field ) {
 }
 
 /**
- * Determine if metabox should show on front page.
+ * Determine if metabox should show on a front page.
  *
  * Usage:
- * 'show_on' => array( 'key' => 'front-page', 'value' => '' ),
+ *   Front page: `'show_on' => array( 'key' => 'front-page', 'value' => 'page_on_front' )`
+ *   Posts page: `'show_on' => array( 'key' => 'front-page', 'value' => 'page_for_posts' )`
  *
  * @link https://github.com/WebDevStudios/CMB2/wiki/Adding-your-own-show_on-filters
  *
@@ -90,11 +91,16 @@ function get_term_options( $field ) {
  */
 function show_on_front_page( $show, $meta_box_args ) {
 
-	if ( ! isset( $meta_box_args['show_on']['key'] ) ) {
+	if ( empty( $meta_box_args['show_on']['key'] ) ) {
 		return $show;
 	}
 
-	if ( 'front-page' !== $meta_box_args['show_on']['key'] ) {
+	$key = \sanitize_key( $meta_box_args['show_on']['key'] );
+	if ( 'front-page' !== $key ) {
+		return $show;
+	}
+
+	if ( empty( $meta_box_args['show_on']['value'] ) ) {
 		return $show;
 	}
 
@@ -111,10 +117,11 @@ function show_on_front_page( $show, $meta_box_args ) {
 		return false;
 	}
 
-	// Get ID of page set as front page, 0 if there isn't one
-	$front_page = intval( \get_option( 'page_on_front' ) );
+	$value = \sanitize_key( $meta_box_args['show_on']['value'] );
+	if ( ! in_array( $value,  array('page_on_front', 'page_for_posts' ) ) ) {
+		return false;
+	}
 
-	// There is a front page set and we're on it!
-	return $post_id === $front_page;
+	return $post_id === intval( \get_option( $value ) );
 }
 \add_filter( 'cmb2_show_on', '\logoscon\WP\Plugin\CMB2\show_on_front_page', 10, 2 );
