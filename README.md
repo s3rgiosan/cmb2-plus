@@ -22,13 +22,13 @@ This allows a metabox to only be shown if a static page is set (Settings > Readi
 For a front page:
 
 ```php
-'show_on' => array( 'key' => 'static-page', 'value' => 'page_on_front' )`
+'show_on' => array( 'key' => 'static-page', 'value' => 'page_on_front' )
 ```
 
 For a posts page:
 
 ```php
-'show_on' => array( 'key' => 'static-page', 'value' => 'page_for_posts' )`
+'show_on' => array( 'key' => 'static-page', 'value' => 'page_for_posts' )
 ```
 
 ## Changelog ##
