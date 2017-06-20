@@ -15,12 +15,19 @@ Common utility classes for the CMB2 plugin on WordPress.
 
 ## Usage ##
 
-### Static page show_on filter ###
+### Static page `show_on` filter ###
 
-This shows only if a static page is set and you're editing it.
+This allows a metabox to only be shown if a static page is set (Settings > Reading Settings) and you're editing it.
+
+For a front page:
 
 ```php
 'show_on' => array( 'key' => 'static-page', 'value' => 'page_on_front' )`
+```
+
+For a posts page:
+
+```php
 'show_on' => array( 'key' => 'static-page', 'value' => 'page_for_posts' )`
 ```
 
